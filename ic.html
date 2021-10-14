@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   
+</head>
+<body>
+    <form id="form1">
+
+        <h5>Maklumat Peribadi</h5>
+        <label>Kad Pengenalan</label>
+        <input id="noic" class="noic" type="text" maxlength="12"  onchange="getBirthDate()">
+        <label>Tarikh Lahir</label>
+        <input id="tarikhlahir" class="tarikhlahir" type="text">
+        <label>Umur</label>
+        <input id="umur" class="umur" type="text">
+
+        <br>
+
+        <hr>
+        <h5>Pendapatan Suami</h5>
+        <label>Gaji Pokok (RM)</label>
+        <input id="" class="" type="text" name="gaji" placeholder="0.00" onchange="kira();" value="0.00">
+        <label>Elaun (RM)</label>
+        <input id="" class="" type="text" name="elaun" placeholder="0.00" onchange="kira();" value="0.00">
+        <label>Jumlah (RM)</label>
+        <input id="" class="" type="text" name="jumlah" placeholder="0.00" value="0.00" disabled>
+
+        <hr>
+        <h5>Pendapatan Isteri</h5>
+        <label>Gaji Pokok (RM)</label>
+        <input id="" class="" type="text" name="gaji1" placeholder="0.00" onchange="kira();" value="0.00">
+        <label>Elaun (RM)</label>
+        <input id="" class="" type="text" name="elaun1" placeholder="0.00" onchange="kira();" value="0.00">
+        <label>Jumlah (RM)</label>
+        <input id="" class="" type="text" name="jumlah1" placeholder="0.00" value="0.00" disabled>
+
+        <Hr>
+            <label>Jumlah Pendapatan Isi Rumah (RM)</label>
+            <input id="" class="" type="text" name="jumlahPen" placeholder="0.00" value="0.00" disabled>
+        </Hr>
+    </form>
+    <script>
+            function getBirthDate() {
+                        var ic = $('.noic').val();
+                        var tkhlhr = $('.tarikhlahir');
+                        var u = $('.umur');
+                        var gen = ic.substring(0, 1);
+                        var thn = ic.substring(0, 2);
+                        var bln = ic.substring(2, 4);
+                        var hari = ic.substring(4, 6);
+                        var yearnow = new Date().getFullYear();
+                     
+        //                var tkhlahir = hari + "/" + bln + "/19" + thn;
+                        if (thn <= 20) {
+                            var tkhlahir = hari + "/" + bln + "/20" + thn;
+                            tkhlhr.val(tkhlahir);
+                            var getyear = "20"+thn;
+                            var umur = yearnow - getyear;
+                            u.val(umur + " tahun.");
+
+                        } else {
+                            var tkhlahir = hari + "/" + bln + "/19" + thn;
+                            tkhlhr.val(tkhlahir);
+                            var getyear = "19"+thn;
+                            var umur = yearnow - getyear;                            
+                            u.val(umur + " tahun");
+                        }
+                        //alert(tkhlahir)
+                    }
+
+            function kira()
+            {
+                a = form1.jumlah;
+                b = form1.gaji.value;
+                c = form1.elaun.value;
+                // c = form1.jumlahPend;
+                // alert(a)
+                jumlahP = parseFloat(b) + parseFloat(c);
+                if (a == isNaN) {
+                    a.value = "";
+                }
+                    
+                else{
+                    a.value = parseFloat(jumlahP).toFixed(2);
+                }
+
+                a1 = form1.jumlah1;
+                b1  = form1.gaji1.value;
+                c1 = form1.elaun1.value;
+                // c = form1.jumlahPend;
+                // alert(a)
+                jumlahP1 = parseFloat(b1) + parseFloat(c1);
+                if (a1 == isNaN) {
+                    a1.value = "";
+                }
+                    
+                else{
+                    a1.value = parseFloat(jumlahP1).toFixed(2);
+                }
+
+                jumlah(a.value,a1.value);
+                
+            }
+
+            function jumlah(a,b){
+                
+                var total = form1.jumlahPen;
+               
+                t = parseFloat(a) + parseFloat(b);
+
+                total.value = parseFloat(t).toFixed(2);
+            }
+
+
+
+    </script>
+</body>
+</html>
