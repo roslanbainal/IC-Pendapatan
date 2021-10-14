@@ -1,1 +1,1 @@
-##Dapatkan Umur dan Tarikh Lahir dari Kad Pengenalan
+#Dapatkan Umur dan Tarikh Lahir dari Kad Pengenalan
